@@ -11,6 +11,7 @@
         public Clouds clouds { get; set; }
         public long dt { get; set; }
         public Sys sys { get; set; }
+        public int timezone { get; set; }
         public int id { get; set; }
         public string name { get; set; }
         public int cod { get; set; }
