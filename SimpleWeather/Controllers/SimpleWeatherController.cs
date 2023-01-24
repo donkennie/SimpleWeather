@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SimpleWeather.Core;
 using SimpleWeather.Models;
 using SimpleWeather.Repositories.Abstractions;
 
@@ -19,8 +20,10 @@ namespace SimpleWeather.Controllers
         }
 
         [HttpGet]
-        public async Task <RootObject> GetCurrentWeather(string location)
+        public async Task <ActionResult<RootObject>> GetCurrentWeather(string location)
         {
+            if (location == null)
+                return BadRequest("Something is wrong somewhere");
             return await _weatherRepository.GetWeatherForecast(location);
         }
     }
