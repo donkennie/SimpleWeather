@@ -26,10 +26,9 @@ namespace SimpleWeather.Extensions
             services.AddIdentityCore<ApplicationUser>(opt =>
             {
                 opt.Password.RequireNonAlphanumeric = false;
-                opt.SignIn.RequireConfirmedEmail = true;
+                opt.SignIn.RequireConfirmedEmail = false;
 
             })
-
           .AddEntityFrameworkStores<DataContext>()
           .AddSignInManager<SignInManager<ApplicationUser>>()
           .AddDefaultTokenProviders();
