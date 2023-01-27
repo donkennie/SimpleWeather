@@ -12,7 +12,6 @@ Create a simple weather RESTful API using .NET6 including authentication and aut
 
 > ### Technlogies and packages used:
 
-> - AutoMapper.Extensions.Microsoft.DependencyInjection
 > - MediatR.Extensions.Microsoft.DependencyInjection
 > - Microsoft.EntityFrameworkCore
 > - MediatR
