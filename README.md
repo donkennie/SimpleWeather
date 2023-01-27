@@ -4,6 +4,7 @@ Create a simple weather RESTful API using .NET6 including authentication and aut
 ###  Overview
 > - An API that gets all your essential weather data for a specific location with an authenticated user 
 
+> - The current weather endpoint can be accessed by an authenticated user with a verified bearer token.
 
 > ### Features implemented:
 
