@@ -4,11 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SimpleWeather.Data;
+using SimpleWeather.Features.Handlers.Queries;
 using SimpleWeather.Models;
 using SimpleWeather.Repositories.Abstractions;
 using SimpleWeather.Repositories.Implementations;
 using SimpleWeather.Services;
 using System.Text;
+using MediatR;
 
 namespace SimpleWeather.Extensions
 {
@@ -21,6 +23,7 @@ namespace SimpleWeather.Extensions
             services.AddSingleton<IWeatherRepository, WeatherRepository>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<TokenService>();
+            services.AddScoped<IUserAccessor, UserAccessor>();
 
 
             services.AddIdentityCore<ApplicationUser>(opt =>
@@ -50,14 +53,13 @@ namespace SimpleWeather.Extensions
                    };
                });
 
-
             services.AddAuthentication();
-         
-
             services.AddDbContext<DataContext>(opt =>
             {
                 opt.UseSqlServer(_config.GetConnectionString("sqlConnection"));
             });
+
+            services.AddMediatR(typeof(GetCurrentWeatherRequestHandler).Assembly);
 
             return services;
         }
