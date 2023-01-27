@@ -1,5 +1,5 @@
 # SimpleWeather
-Create a simple weather RESTful API using .NET6 including authentication and authorizatio
+Create a simple weather RESTful API using .NET6 including authentication and authorization
 
 ###  Overview
 > - An API that gets all your essential weather data for a specific location with an authenticated user 
@@ -15,6 +15,7 @@ Create a simple weather RESTful API using .NET6 including authentication and aut
 > - MediatR.Extensions.Microsoft.DependencyInjection
 > - Microsoft.EntityFrameworkCore
 > - MediatR
+> - MySqlServer
 > - Newtonsoft.Json
 > - Microsoft.EntityFrameworkCore.Tools
 
