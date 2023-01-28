@@ -15,7 +15,7 @@ namespace SimpleWeather.Controllers
         [HttpGet("location")]
         [ProducesResponseType(typeof(RootObject), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BaseCommandResponse), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetCompanyById(string location)
+        public async Task<IActionResult> GetCurrentWeatherByLocation(string location)
         {
             return HandleResult(await Mediator.Send(new GetCurrentWeatherRequest { Location = location }));
         }
