@@ -11,6 +11,7 @@ using SimpleWeather.Repositories.Implementations;
 using SimpleWeather.Services;
 using System.Text;
 using MediatR;
+using Microsoft.OpenApi.Models;
 
 namespace SimpleWeather.Extensions
 {
@@ -60,6 +61,59 @@ namespace SimpleWeather.Extensions
             });
 
             services.AddMediatR(typeof(GetCurrentWeatherRequestHandler).Assembly);
+
+
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Current Weather API",
+                    Version = "v1",
+                    Description = "Current Weather API by Donkennie",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Ajeigbe Kehinde",
+                        Email = "ajeigbekehinde160@gmail.com",
+                        Url = new Uri("https://twitter.com/donkennie"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Current Weather API LICX",
+                        Url = new Uri("https://example.com/license"),
+                    }
+                });
+
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                s.AddSecurityRequirement(new OpenApiSecurityRequirement()
+             {
+             {
+             new OpenApiSecurityScheme
+             {
+             Reference = new OpenApiReference
+             {
+             Type = ReferenceType.SecurityScheme,
+            Id = "Bearer"
+            },
+            Name = "Bearer",
+
+            },
+
+             new List<string>()
+
+                }
+
+             });
+
+
+            });
 
             return services;
         }
